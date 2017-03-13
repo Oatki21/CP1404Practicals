@@ -1,9 +1,13 @@
 def main():
-    score = float(input("Enter score: "))
-    parameter_sort(score)
-#TODO Integer Checking
-#while score != score.is_integer():
-    #float(input("Enter score: "))
+    scoreCheck = False
+    while not scoreCheck:
+        try:
+            score = float(input("Enter score: "))
+            scoreCheck = True
+            parameter_sort(score)
+        except ValueError:
+            print("Please enter a valid integer.")
+
 
 def parameter_sort(score):
     if score < 0 or score > 100:
@@ -18,5 +22,6 @@ def parameter_sort(score):
     else:
         result = print("Bad")
         return result
+
 
 main()
