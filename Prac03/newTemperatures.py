@@ -13,24 +13,23 @@ def main():
         choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "C":
-            celsius_to_fahrenheit()
+            calculate_fahrenheit()
         elif choice == "F":
-            fahrenheit_to_celsius()
+            calculate_celsius()
         else:
             print("Invalid option")
         print(MENU)
         choice = input(">>> ").upper()
     print("Thank you.")
 
-
-def celsius_to_fahrenheit():
+def calculate_fahrenheit():
     celsius = float(input("Celsius: "))
     fahrenheit = celsius * 9.0 / 5 + 32
     result = print("Result: {:.2f} F".format(fahrenheit))
     return result
 
 
-def fahrenheit_to_celsius():
+def calculate_celsius():
     fahrenheit = float(input("Fahrenheit: "))
     celsius = 5 / 9 * (fahrenheit - 32)
     result = print("Result: {:.2f} °".format(celsius))

@@ -8,8 +8,9 @@ def main():
     for i in range(LOWER, UPPER):
         print("{0:3} {1:>6}".format(i, chr(i)))
 
-def get_number(LOWER, UPPER):
-    Parameter = False
+
+def get_number(lower, upper):
+    suitable_number = False
     number = 0
     character = str(input("Enter a character"))
     while character.isalpha() == False or len(character) != 1:
@@ -17,12 +18,12 @@ def get_number(LOWER, UPPER):
         character = str(input("Enter a character"))
     asciiCharacter = ord(character)
     print("The ASCII code for {} is {}".format(character, asciiCharacter))
-    while not Parameter:
+    while not suitable_number or number > upper or number < lower:
         try:
-            number = int(input("Enter a number between {} and {}:".format(LOWER, UPPER)))
-            Parameter = True
-        except ValueError or number > UPPER+1 or number < LOWER-1 or len(character) < 3 or len(character) < 0:
-            print(("Invalid Number. Please enter a number between {} and {}:".format(LOWER, UPPER)))
+            number = int(input("Enter a number between {} and {}:".format(lower, upper)))
+            suitable_number = True
+        except ValueError:
+            print(("Invalid Number. Please enter a number between {} and {}:".format(lower, upper)))
     return number
 
 main()
