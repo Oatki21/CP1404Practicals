@@ -6,13 +6,14 @@ def main():
     frequency = get_frequency()
     print_loop(name, frequency)
 
+
 def get_frequency():
     frequency = 0
-    intcheck = False
-    while not intcheck:
+    int_check = False
+    while not int_check:
         try:
             frequency = int(input("Please enter a number"))
-            intcheck = True
+            int_check = True
         except ValueError:
             print("Please enter a valid integer.")
     return frequency
@@ -26,8 +27,9 @@ def print_loop(name, frequency):
 def get_name():
     name = str(input("What is your name"))
     while name == "" or name.isalpha() == False:
-        print("error")
+        print("Error")
         name = str(input("What is your name"))
     return name
+
 
 main()

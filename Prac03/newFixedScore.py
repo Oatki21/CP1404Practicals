@@ -1,25 +1,27 @@
 def main():
-    scorecheck = False
-    while not scorecheck:
+    check_score = False
+    while not check_score:
         try:
             score = float(input("Enter score: "))
-            scorecheck = True
-            calculate_grade(score)
+            check_score = True
+            print(calculate_grade(score))
         except ValueError:
             print("Please enter a valid integer.")
 
+
 def calculate_grade(score):
     if score < 0 or score > 100:
-        result = print("Invalid score")
+        result = "Invalid score"
         return result
-    elif score >= 50 and score <= 90:
-        result = print("Passable")
+    elif 90 >= score >= 50:
+        result = "Passable"
         return result
     elif score > 90:
-        result = print("Excellent")
+        result = "Excellent"
         return result
     else:
-        result = print("Bad")
+        result = "Bad"
         return result
+
 
 main()
