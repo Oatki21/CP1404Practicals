@@ -26,7 +26,7 @@ def print_loop(name, frequency):
 
 def get_name():
     name = str(input("What is your name"))
-    while name == "" or name.isalpha() == False:
+    while name == "" or not name.isalpha():
         print("Error")
         name = str(input("What is your name"))
     return name

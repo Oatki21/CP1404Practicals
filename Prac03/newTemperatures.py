@@ -15,9 +15,10 @@ def main():
         choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "C":
-            calculate_fahrenheit()
+            print(calculate_fahrenheit())
+
         elif choice == "F":
-            calculate_celsius()
+            print(calculate_celsius())
         else:
             print("Invalid option")
         print(menu)
