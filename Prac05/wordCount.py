@@ -1,5 +1,5 @@
 wordCount = {}
-text = str(input("Text: "))
+text = str(input("Text: ")).lower()
 wordList = text.split(" ")
 letterCount = []
 for word in wordList:
@@ -9,5 +9,5 @@ for word in wordList:
     else:
         wordCount[word] = 1
 
-for word in wordCount:
+for word in sorted(wordCount):
     print("{:{}} : {}".format(word, max(letterCount), wordCount[word]))
