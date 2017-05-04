@@ -2,6 +2,7 @@
 CP1404/CP5632 Practical
 Car class
 """
+import random
 
 
 class Car:
@@ -35,11 +36,11 @@ class Car:
 
 class Taxi(Car):
     """ specialised version of a Car that includes fare costs """
+    price_per_km = 1.2
 
-    def __init__(self, name, fuel, price_per_km):
+    def __init__(self, name, fuel):
         """ initialise a Taxi instance, based on parent class Car """
         super().__init__(name, fuel)
-        self.price_per_km = price_per_km
         self.current_fare_distance = 0
 
     def __str__(self):
@@ -60,3 +61,36 @@ class Taxi(Car):
         distance_driven = super().drive(distance)
         self.current_fare_distance += distance_driven
         return distance_driven
+
+
+class UnreliableCar(Car):
+    def __init__(self, name, fuel, reliability):
+        """ initialise a Taxi instance, based on parent class Car """
+        super().__init__(name, fuel)
+        self.reliability = float(reliability)
+
+    def drive(self, distance):
+        random_number = random.randrange(0, 100)
+        if random_number < self.reliability:
+            distance_driven = super().drive(distance)
+            return distance_driven
+        else:
+            return print("Not reliable enough")
+
+
+class SilverServiceTaxi(Taxi):
+    flagfall = 4.50
+
+    def __init__(self, name, fuel, fanciness):
+        super().__init__(name, fuel)
+        self.fanciness = float(fanciness)
+        self.price_per_km = Taxi.price_per_km * fanciness
+
+    def get_fare(self):
+        """ get the price for the taxi trip """
+        return super().get_fare() + self.flagfall
+
+
+    def __str__(self):
+        """ return a string representation like a car but with current fare distance"""
+        return "{}, plus flagfall of ${:.2f}".format(super().__str__(), self.flagfall)
