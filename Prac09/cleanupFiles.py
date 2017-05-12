@@ -39,15 +39,23 @@ __author__ = 'Lindsay Ward'
 #     print("\tand files:", file_list)
 """What do I want to do?
 Add a _ before Uppercase letters (Not including the first)
+Ensure that Letters after "_" are Uppercase
 Replace " " with "_" (Already done in example)
 Replace "TXT" with "txt """
 
 
 def get_fixed_filename(filename):
-    for i, letter in enumerate(filename):
+    filename = filename.replace(" ", "_").replace(".TXT", ".txt")
+    for i, letter in enumerate(filename[:-1]):
         print(i, letter)
-        if letter.upper():
-            pass
+        # if filename[i] == "":
+        #     letter = "_"
+        #filename += letter
+        if letter.islower() and filename[i+1].isupper():
+            letter.replace(letter,"_"+letter)
+
+
+
     fixed_filename = filename
     return fixed_filename
 
